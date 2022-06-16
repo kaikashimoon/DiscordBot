@@ -1,7 +1,8 @@
 const { Client, Intents } = require('discord.js');
-
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 const PREFIX = "$"
+require('dotenv').config()
+
 
 client.on('ready', ()=>{
     console.log(`${client.user.tag} has logged in`)
@@ -11,9 +12,8 @@ client.on('ready', ()=>{
 client.on('message', async (message)=>{
     if(message.author.bot) return
    console.log(`[${message.author.tag}]: ${message.content}`) 
-    if (message.content === 'hello') {
-        message.channel.send('hello')
-        //  message.reply('Hello there')
+    if (message.content === 'Hello') {
+        message.channel.send('Hello')
     }
 
     //Receiving the message
@@ -50,5 +50,5 @@ if (CMD_NAME === 'kick') {
 
 
 
-client.login('OTg2NzA5MDY2MTgzMjQ1ODc2.Gy-mlg.9PtAZ6OigwQZSm0ezSPHXwjhKJHphWKSEFI6nA');
+client.login(process.env.DISCORDJS_BOT_TOKEN);
 
